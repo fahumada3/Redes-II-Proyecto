@@ -15,7 +15,7 @@ SE HACE CADA VEZ QUE TRABAJES EN EL PROYECTO! (PASENME SUS USUARIOS AL WHATSAPP 
 3. Realiza los cambios que quieras al proyecto y cuando termines coloca en la terminal de VSCode:
 4. git add .
 5. git commit -m "Resumen de los cambios"
-6. git push origin main 
+6. git push 
 7. Espera unos segundos a que se suban los cambios
 8. Cierra la carpeta en VSCode y borrala
 
