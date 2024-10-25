@@ -1,13 +1,1 @@
-Hecho.
-sistema de login
-
-Por hacer.
-el parqueadero
-poder registrar un veiculo
-porder reservar un espacio
-ver que veichulo esta ocupando un espacio
-historial de entrada y salida
-mejorar la apariencia con en el css
-
-
-fecha para terminar: ????????
+???????????????????
