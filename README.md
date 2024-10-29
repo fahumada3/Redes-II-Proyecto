@@ -20,6 +20,6 @@ SE HACE CADA VEZ QUE TRABAJES EN EL PROYECTO! (PASENME SUS USUARIOS AL WHATSAPP 
 8. Ve a la página del repositorio en GitHub, verás un botón que dice "Compare & pull request". Haz clic en él.
 9. Añade un título y descripción para tu solicitud de extracción y haz clic en "Create pull request".
 10. Espera unos segundos a que se suban los cambios
-11. Para seguier trabajando en la version mas nueva abre la carpeta del proyecto y usa:
+11. Para seguier trabajando en proyecto siempre descarga la ultima version con:
 12. git pull origin main
 
