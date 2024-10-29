@@ -13,9 +13,13 @@ SE HACE CADA VEZ QUE TRABAJES EN EL PROYECTO! (PASENME SUS USUARIOS AL WHATSAPP 
 2. git clone https://github.com/fahumada3/Redes-II-Proyecto.git C:\Users\TuUsuario\Desktop\Redes-II-Proyecto
 3. Abre la carpeta en VSCode
 3. Realiza los cambios que quieras al proyecto y cuando termines coloca en la terminal de VSCode:
-4. git add .
-5. git commit -m "Resumen de los cambios"
-6. git push origin main
-7. Espera unos segundos a que se suban los cambios
-8. Cierra la carpeta en VSCode y borrala
+4. git checkout -b nombre-de-tu-rama
+5. git add .
+6. git commit -m "Resumen de los cambios"
+7. git push origin nombre-de-tu-rama
+8. Ve a la página del repositorio en GitHub, verás un botón que dice "Compare & pull request". Haz clic en él.
+9. Añade un título y descripción para tu solicitud de extracción y haz clic en "Create pull request".
+10. Espera unos segundos a que se suban los cambios
+11. Para seguier trabajando en la version mas nueva abre la carpeta del proyecto y usa:
+12. git pull origin main
 
