@@ -10,7 +10,7 @@ SOLO SE TIENE QUE HACER UNA VEZ!
 
 SE HACE CADA VEZ QUE TRABAJES EN EL PROYECTO! (PASENME SUS USUARIOS AL WHATSAPP PARA AGREGARLOS Y QUE PUEDAN EDITAR LOS ARCHIVOS)
 1. En la terminal de VSCode descarga la ultima version del proyecto con:
-2. git clone https://github.com/fahumada3/Redes-II-Proyecto.git C:\Users\TuUsuario\Desktop\Redes-II-Proyecto
+2. git clone https://github.com/fahumada3/Redes-II-Proyecto.git C:\Users\TuUsuario\Desktop\Redes-II-Proyecto (No es necesario repetir este si ya tiene la carpeta)
 3. Abre la carpeta en VSCode
 3. Realiza los cambios que quieras al proyecto y cuando termines coloca en la terminal de VSCode:
 4. git checkout -b nombre-de-tu-rama
