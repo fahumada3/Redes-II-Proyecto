@@ -64,8 +64,10 @@
 .button-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px; 
+
   margin-left: 200px;
+  padding: 0px;
+  margin: auto;
   
 }
 
@@ -73,33 +75,57 @@
   display: flex;
   flex-direction: column;
   justify-content: start;
+
+
 }
 
 .my-button {
+  display: flex;
+  align-items: center;
   margin: 10px 0; 
-  width: 300px;
+  width: 250px;
   height: 100px;
   background-color: #f8f9fa;
   border-radius: 12px;
-  border-color: #ff0000;
-  border: 2px solid #ff0000; 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
-  transition: 0.3s; 
-
-	line-height: 25px;
-	text-align: center;
+  border: 2px solid #ff0000;
+  box-shadow: 0 9px 18px rgba(0, 0, 0, 0.3);
+  transition: 0.3s;
+  text-align: center;
+  position: relative;
+  font-size: 14px;
+  padding: 0 10px;
+  text-align:justify;
+  
 }
+
+
+.my-button::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  background-color: #b30000; /* Barra roja al fondo */
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  transition: background-color 0.3s ease; /* Transición suave para el after */
+
+}
+
+
 .my-button:hover {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); 
   background-color: #ff0000;
   color: #f8f9fa;
 }
 .button-icon {
-  width: 60px; 
-  height: 60px;
-  margin-right: 8px; 
-  vertical-align: middle; 
-  text-align: left;
+  display: flex;
+  grid-column: 1;
+  width: 50px; 
+  height: 50px;
+  margin-right: 60px; 
+
 }
  
 
@@ -109,4 +135,11 @@ body {
 
 footer {
   position: relative; 
+}
+
+
+i{
+  display: flex;
+  padding: 15px;
+
 }
