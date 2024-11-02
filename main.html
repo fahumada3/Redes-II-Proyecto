@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Campo para la imagen del usuario que estará vacío inicialmente -->
+    <div id="imagen-usuario-container" style="width: 150px; height: auto;">
+        <img id="imagen-usuario" src="" alt="Imagen del Usuario" style="display: none; width: 100%; height: auto;">
+    </div>
+
+    <p id="nombre-usuario"></p>
+    <button onclick="window.location.href='parqueadero.html'">PARQUEADERO</button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const usuarioAutenticado = JSON.parse(localStorage.getItem('usuarioAutenticado'));
+
+            if (usuarioAutenticado) {
+                // Mostrar información del usuario
+                const imagenUsuario = document.getElementById('imagen-usuario');
+                imagenUsuario.src = usuarioAutenticado.imagen; // Cambiar a la ruta de la imagen
+                imagenUsuario.style.display = 'block'; // Mostrar la imagen
+            } else {
+                // Redirigir a la página de inicio de sesión si no hay usuario autenticado
+                window.location.href = 'index.html';
+            }
+        });
+    </script>
+</body>
+</html>

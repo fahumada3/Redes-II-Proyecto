@@ -1,7 +1,34 @@
-{
-    "nombre": "Usuario de Prueba",
-    "matricula": "ABC1234",
-    "usuario": "uprueba0",
-    "correo": "uprueba0@cuc.edu.co",
-    "contrasena": "1234"
-}
+[
+    {
+        "nombre": "Usuario de Prueba",
+        "matricula": "ABC1234",
+        "usuario": "uprueba0",
+        "correo": "uprueba0@cuc.edu.co",
+        "contrasena": "1234",
+        "imagen": "ruta/a/imagen1.jpg"
+    },
+    {
+        "nombre": "Fernando Ahumada",
+        "matricula": "ABC123",
+        "usuario": "fahumada3",
+        "correo": "fahumada3@cuc.edu.co",
+        "contrasena": "1234",
+        "imagen": "imagenes-usuarios/fahumada3.jpg"
+    },
+    {
+        "nombre": "Christian Alvarez",
+        "matricula": "ABC123",
+        "usuario": "calvarez22",
+        "correo": "calvarez22@cuc.edu.co",
+        "contrasena": "1234",
+        "imagen": "imagenes-usuarios/calvarez22.jpg"
+    },
+    {
+        "nombre": "Hector Garcia",
+        "matricula": "ABC123",
+        "usuario": "hgarcia20",
+        "correo": "hgarcia20@cuc.edu.co",
+        "contrasena": "1234",
+        "imagen": "imagenes-usuarios/hgarcia20.jpg"
+    }
+]

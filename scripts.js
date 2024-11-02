@@ -1,7 +1,6 @@
 // Seleccionamos los botones y las cards
 const agregarBtn = document.querySelector("button:nth-child(1)");
-const reservarBtn = document.querySelector("button:nth-child(2)");
-const eliminarBtn = document.querySelector("button:nth-child(3)");
+const eliminarBtn = document.querySelector("button:nth-child(2)");
 const cards = document.querySelectorAll(".card");
 
 // Variable para controlar la acción seleccionada
@@ -13,13 +12,11 @@ function seleccionarAccion(accion) {
 
     // Resaltar el botón seleccionado
     agregarBtn.classList.toggle("selected", accion === "agregar");
-    reservarBtn.classList.toggle("selected", accion === "reservar");
     eliminarBtn.classList.toggle("selected", accion === "eliminar");
 }
 
 // Asignar eventos a los botones
 agregarBtn.addEventListener("click", () => seleccionarAccion("agregar"));
-reservarBtn.addEventListener("click", () => seleccionarAccion("reservar"));
 eliminarBtn.addEventListener("click", () => seleccionarAccion("eliminar"));
 
 // Función para manejar el estado de una card
@@ -33,40 +30,24 @@ async function cambiarEstado(card) {
 
     if (accionSeleccionada === "agregar") {
         if (!estadoActual.contains("occupied") && !estadoActual.contains("reserved")) {
-            // Cargar datos desde el JSON
-            const datos = await cargarDatos();
-            const { nombre, matricula } = datos;
-            
-            card.classList.add("occupied");
-            card.classList.remove("reserved");
-            card.querySelector('.card-text').textContent = `Espacio ${numeroEspacio} - Ocupado`;
-            nombreElemento.textContent = `Nombre - ${nombre}`;
-            matriculaElemento.textContent = `Matrícula - ${matricula}`;
+            // Obtener el usuario autenticado del localStorage
+            const usuarioAutenticado = JSON.parse(localStorage.getItem('usuarioAutenticado'));
 
-            const ahora = new Date();
-            const horaActual = ahora.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-            const fechaActual = ahora.toLocaleDateString('es-ES'); // Formato DD/MM/YYYY
-            horaElemento.textContent = `Hora - ${horaActual}`;
-            fechaElemento.textContent = `Fecha - ${fechaActual}`;
-        }
-    } else if (accionSeleccionada === "reservar") {
-        if (!estadoActual.contains("occupied") && !estadoActual.contains("reserved")) {
-            // Cargar datos desde el JSON
-            const datos = await cargarDatos();
-            const { nombre, matricula } = datos;
+            if (usuarioAutenticado) {
+                const { nombre, matricula } = usuarioAutenticado;
 
-            card.classList.add("reserved");
-            card.classList.remove("occupied");
-            card.querySelector('.card-text').textContent = `Espacio ${numeroEspacio} - Reservado`;
-            nombreElemento.textContent = `Nombre - ${nombre}`;
-            matriculaElemento.textContent = `Matrícula - ${matricula}`;
+                card.classList.add("occupied");
+                card.classList.remove("reserved");
+                card.querySelector('.card-text').textContent = `Espacio ${numeroEspacio} - Ocupado`;
+                nombreElemento.textContent = `Nombre - ${nombre}`;
+                matriculaElemento.textContent = `Matrícula - ${matricula}`;
 
-            // Actualizar la hora y la fecha al reservar
-            const ahora = new Date();
-            const horaActual = ahora.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-            const fechaActual = ahora.toLocaleDateString('es-ES'); // Formato DD/MM/YYYY
-            horaElemento.textContent = `Hora - ${horaActual}`;
-            fechaElemento.textContent = `Fecha - ${fechaActual}`;
+                const ahora = new Date();
+                const horaActual = ahora.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                const fechaActual = ahora.toLocaleDateString('es-ES'); // Formato DD/MM/YYYY
+                horaElemento.textContent = `Hora - ${horaActual}`;
+                fechaElemento.textContent = `Fecha - ${fechaActual}`;
+            }
         }
     } else if (accionSeleccionada === "eliminar") {
         if (estadoActual.contains("occupied") || estadoActual.contains("reserved")) {
@@ -83,20 +64,12 @@ async function cambiarEstado(card) {
     desactivarAccion();
 }
 
-// Función para cargar datos desde el JSON
-async function cargarDatos() {
-    const response = await fetch('info.json');
-    const datos = await response.json();
-    return datos;
-}
-
 // Función para desactivar la acción seleccionada
 function desactivarAccion() {
     accionSeleccionada = null;
 
     // Quitar el resalte de los botones
     agregarBtn.classList.remove("selected");
-    reservarBtn.classList.remove("selected");
     eliminarBtn.classList.remove("selected");
 }
 

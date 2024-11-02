@@ -9,7 +9,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 const contrasenaInput = document.getElementById('contrasena').value;
 
                 // Validación
-                if ((usuarioInput === datosUsuario.usuario || usuarioInput === datosUsuario.correo) && contrasenaInput === datosUsuario.contrasena) {
+                const usuarioAutenticado = datosUsuario.find(usuario => 
+                    (usuarioInput === usuario.usuario || usuarioInput === usuario.correo) && 
+                    contrasenaInput === usuario.contrasena
+                );
+
+                if (usuarioAutenticado) {
+                    // Almacenar el usuario autenticado en localStorage
+                    localStorage.setItem('usuarioAutenticado', JSON.stringify(usuarioAutenticado));
+
                     // Redirigir a parqueadero.html
                     window.location.href = 'indexEmma.html';
                 } else {
