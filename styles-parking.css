@@ -124,3 +124,23 @@ footer .navbar-text a:hover {
 }
 
 
+#imagen-usuario-container {
+    width: 150px;
+    text-align: center;
+}
+
+#imagen-usuario {
+    display: none;
+    width: 100px;
+    height: 100px; 
+    margin: 0 auto; 
+    position: relative; 
+    top: 1px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    overflow: hidden; 
+}
+
+#nombre-usuario {
+    margin-top: 20px;
+}
