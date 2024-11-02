@@ -42,63 +42,6 @@ main {
     justify-content: center;
 }
 
-.card {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 300px;
-    height: 100px;
-    background-color: white;
-    color: #333;
-    border-radius: 15px;
-    border: 1px solid #b30000;
-    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.7);
-    position: relative;
-    padding: 10px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.card::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 10px;
-    background-color: #b30000; /* Barra roja al fondo */
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    transition: background-color 0.3s ease; /* Transición suave para el after */
-}
-
-.card:hover {
-    background-color: #b30000; /* Cambia el fondo a rojo en hover */
-    color: white; /* Cambia el color del texto a blanco */
-    border-color: #b30000; /* Cambia el borde al mismo color rojo */
-}
-
-.card:hover::after {
-    background-color: #990000; /* Cambia el after a un tono más oscuro en hover */
-}
-
-.card:hover img {
-    filter: brightness(0) invert(1); /* Cambia el color del icono a blanco */
-}
-
-.card img {
-    width: 50px;
-    height: auto;
-    margin-right: 10px;
-    transition: filter 0.3s ease; /* Transición suave para el icono */
-}
-
-.card span {
-    font-size: 16px;
-    font-weight: bold;
-    transition: color 0.3s ease; /* Transición suave para el color del texto */
-}
-
-
 /* Pie de página */
 footer.navbar {
     background-color: #f8f9fa; 
@@ -125,22 +68,87 @@ footer .navbar-text a:hover {
 
 
 #imagen-usuario-container {
-    width: 150px;
-    text-align: center;
+    width: 150px; /* Asegúrate de que el ancho del contenedor sea suficiente */
+    text-align: center; /* Centra el contenido horizontalmente */
 }
 
 #imagen-usuario {
-    display: none;
-    width: 100px;
-    height: 100px; 
-    margin: 0 auto; 
-    position: relative; 
-    top: 1px; 
-    border-radius: 50%; 
-    object-fit: cover; 
-    overflow: hidden; 
+    display: none; /* Asegúrate de que la imagen esté oculta por defecto */
+    width: 100px; /* Ajusta el tamaño según lo necesites */
+    height: 100px; /* Mantén la altura igual al ancho para que sea circular */
+    margin: 0 auto; /* Centra la imagen */
+    position: relative; /* Puede usarse para posicionar la imagen en relación al contenedor */
+    top: 1px; /* Ajusta el valor para mover la imagen hacia abajo */
+    border-radius: 50%; /* Hace que la imagen sea circular */
+    object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
+    overflow: hidden; /* Asegura que nada sobresalga del borde circular */
 }
 
 #nombre-usuario {
-    margin-top: 20px;
+    margin-top: 20px; /* Ajusta el valor según necesites para mover el párrafo hacia abajo */
+}
+
+
+.button-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    margin-left: 580px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #808080;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #b30000; /* Cambia el fondo a rojo en hover */
+    color: white; /* Cambia el color del texto a blanco */
+    border-color: #b30000; /* Cambia el borde al mismo color rojo */
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    margin-top: 30px;
+    width: 80%;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 250px;
+    height: 200px;
+    background-color: white;
+    color: #333;
+    border-radius: 15px;
+    border: 1px solid #b30000;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.7);
+    position: relative;
+    padding: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.card-text {
+    margin-bottom: 5px;
+}
+
+.card.occupied {
+    background-color: #FF4C4C;
+    color: white;
+}
+
+button.selected {
+    background-color: #333333;
+    color: white;
 }

@@ -6,13 +6,14 @@
     <title>Document</title>
 </head>
 <body>
-    <!-- Campo para la imagen del usuario que estará vacío inicialmente -->
     <div id="imagen-usuario-container" style="width: 150px; height: auto;">
         <img id="imagen-usuario" src="" alt="Imagen del Usuario" style="display: none; width: 100%; height: auto;">
     </div>
 
     <p id="nombre-usuario"></p>
+    <p id="correo-usuario"></p>
     <button onclick="window.location.href='parqueadero.html'">PARQUEADERO</button>
+    <button id="logout-button">Logout</button> <!-- Botón de Logout -->
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -23,10 +24,20 @@
                 const imagenUsuario = document.getElementById('imagen-usuario');
                 imagenUsuario.src = usuarioAutenticado.imagen; // Cambiar a la ruta de la imagen
                 imagenUsuario.style.display = 'block'; // Mostrar la imagen
+                
+                // Mostrar el nombre y correo del usuario
+                document.getElementById('nombre-usuario').textContent = usuarioAutenticado.nombre; // Nombre del usuario
+                document.getElementById('correo-usuario').textContent = usuarioAutenticado.correo; // Correo del usuario
             } else {
                 // Redirigir a la página de inicio de sesión si no hay usuario autenticado
                 window.location.href = 'index.html';
             }
+
+            // Manejo del botón de Logout
+            document.getElementById('logout-button').addEventListener('click', function() {
+                localStorage.removeItem('usuarioAutenticado'); // Eliminar usuario autenticado
+                window.location.href = 'index.html'; // Redirigir a la página de inicio de sesión
+            });
         });
     </script>
 </body>

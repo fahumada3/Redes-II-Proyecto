@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     localStorage.setItem('usuarioAutenticado', JSON.stringify(usuarioAutenticado));
 
                     // Redirigir a parqueadero.html
-                    window.location.href = 'indexEmma.html';
+                    window.location.href = 'indexEMMA.html';
                 } else {
                     document.getElementById('mensaje').innerText = 'Usuario o contraseña incorrectos.';
                 }
