@@ -68,26 +68,27 @@ footer .navbar-text a:hover {
 
 
 #imagen-usuario-container {
-    width: 150px; /* Asegúrate de que el ancho del contenedor sea suficiente */
-    text-align: center; /* Centra el contenido horizontalmente */
+    width: 50px;
+    text-align: center;
 }
 
 #imagen-usuario {
-    display: none; /* Asegúrate de que la imagen esté oculta por defecto */
-    width: 100px; /* Ajusta el tamaño según lo necesites */
-    height: 100px; /* Mantén la altura igual al ancho para que sea circular */
-    margin: 0 auto; /* Centra la imagen */
-    position: relative; /* Puede usarse para posicionar la imagen en relación al contenedor */
-    top: 1px; /* Ajusta el valor para mover la imagen hacia abajo */
-    border-radius: 50%; /* Hace que la imagen sea circular */
-    object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
-    overflow: hidden; /* Asegura que nada sobresalga del borde circular */
+    display: none; 
+    width: 1px;
+    height: 1px; 
+    margin: 0 auto; 
+    position: relative;
+    top: 1px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    overflow: hidden; 
 }
 
 #nombre-usuario {
-    margin-top: 20px; /* Ajusta el valor según necesites para mover el párrafo hacia abajo */
+    margin-top: 20px;
+    margin-bottom: 50px;
 }
-
+  
 
 .button-container {
     display: flex;
@@ -108,9 +109,9 @@ button {
 }
 
 button:hover {
-    background-color: #b30000; /* Cambia el fondo a rojo en hover */
-    color: white; /* Cambia el color del texto a blanco */
-    border-color: #b30000; /* Cambia el borde al mismo color rojo */
+    background-color: #b30000;
+    color: white;
+    border-color: #b30000;
 }
 
 .card-container {

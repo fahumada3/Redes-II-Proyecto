@@ -29,14 +29,11 @@
         </div>
         <div class="offcanvas-body">
           <ul class="list-unstyled">
-          <!--AJUSTAR POSICION DE LA FOTO y NOMBRE RESPECTO AL MENU ARREGLAR LUEGO-->
             <div id="imagen-usuario-container" style="width: 150px; height: auto;">
               <img id="imagen-usuario" src="" alt="Imagen del Usuario" style="display: none; width: 100%; height: auto;">
               <p id="nombre-usuario"></p>
-              <p id="correo-usuario"></p>
-              <button id="logout-button">Logout</button> <!-- Botón de Logout -->
            </div>
-          <!--AJUSTAR POSICION DE LA FOTO y NOMBRE RESPECTO AL MENU ARREGLAR LUEGO-->
+  
             <li><a href="#" class="nav-link menu-item"><img src="/Imagenes/BotonIcons/home.png" class="me-2" width="20" height="20" alt="Inicio">Inicio</a></li>
             <li><a href="#" class="nav-link menu-item"><img src="/Imagenes/BotonIcons/Practicas.png" class="me-2" width="20" height="20" alt="Prácticas">Prácticas</a></li>
             <li><a href="#" class="nav-link menu-item"><img src="/Imagenes/BotonIcons/Becas.png" class="me-2" width="20" height="20" alt="Becas">Becas</a></li>  
@@ -153,12 +150,6 @@
           // Redirigir a la página de inicio de sesión si no hay usuario autenticado
           window.location.href = 'index.html';
       }
-
-      // Manejo del botón de Logout
-      document.getElementById('logout-button').addEventListener('click', function() {
-          localStorage.removeItem('usuarioAutenticado'); // Eliminar usuario autenticado
-          window.location.href = 'index.html'; // Redirigir a la página de inicio de sesión
-      });
   });
 </script>
 </html>
