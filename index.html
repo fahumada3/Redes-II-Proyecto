@@ -4,55 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="Imagenes_Emma/Imagen-Titulo.png">
+    <link href="index.css" rel="stylesheet">
     <title>emma</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0; /* Fondo gris claro */
-            font-family: Arial, sans-serif;
-        }
-        .login-container {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            text-align: center;
-            width: 300px; /* Ancho del cuadro */
-        }
-        h2 {
-            margin: 0 0 15px;
-        }
-        input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box; /* Para incluir el padding en el ancho total */
-        }
-        button {
-            background-color: red; /* Botón rojo */
-            color: white; /* Texto blanco */
-            border: none;
-            padding: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
-            font-size: 16px;
-        }
-        button:hover {
-            background-color: darkred; /* Efecto al pasar el ratón */
-        }
-        .example-image {
-            width: 80%; /* Cambia a un valor fijo si prefieres, por ejemplo, '150px' */
-            height: auto; /* Mantiene la proporción original */
-            margin: 10px 0;
-        }
-    </style>
 </head>
 <body>
 
@@ -67,7 +20,39 @@
     <p id="mensaje" style="color: red;"></p>
 </div>
 
-<script src="login.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+    fetch('info.json')
+        .then(response => response.json())
+        .then(datosUsuario => {
+            document.getElementById('loginForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const usuarioInput = document.getElementById('usuario').value;
+                const contrasenaInput = document.getElementById('contrasena').value;
+
+                // Validación
+                const usuarioAutenticado = datosUsuario.find(usuario => 
+                    (usuarioInput === usuario.usuario || usuarioInput === usuario.correo) && 
+                    contrasenaInput === usuario.contrasena
+                );
+
+                if (usuarioAutenticado) {
+                    // Almacenar el usuario autenticado en localStorage
+                    localStorage.setItem('usuarioAutenticado', JSON.stringify(usuarioAutenticado));
+
+                    // Redirigir a parqueadero.html
+                    window.location.href = 'indexEMMA.html';
+                } else {
+                    document.getElementById('mensaje').innerText = 'Usuario o contraseña incorrectos.';
+                }
+            });
+        })
+        .catch(error => {
+            console.error('Error al cargar el archivo JSON:', error);
+        });
+    });
+</script>
 
 </body>
 </html>
