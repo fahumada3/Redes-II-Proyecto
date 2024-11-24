@@ -13,12 +13,12 @@
     <link rel="icon" href="/Imagenes/16.png" type="image/x-icon">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg" style="background-color: red;">
+    <nav class="navbar navbar-expand-lg" style="background-color: #b30000;">
         <div class="container-fluid">
           <button class="navbar-toggler d-lg-block" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu" aria-controls="offcanvasMenu" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <a class="navbar-brand mx-auto text-white" href="#">INICIO</a>
+          <a class="navbar-brand mx-auto text-white" href="#">MI ESTACIONAMIENTO</a>
         </div>
       </nav>
       
@@ -59,18 +59,16 @@
         <div class="image-container">
             <img src="/Imagenes/logo emma.png" alt="ImagenEmma" class="center-image">
         </div>
-        <div class="search-container">
-          <label for="search" class="search-label">
-            <strong>PROCESOS</strong> <span class="highlight"><strong>ACADÉMICOS</strong></span>
-        </label>
-            <input type="text" id="search" class="search-input" placeholder="Buscar">
-        </div>
-    <hr class="divider">
+
     <div class="sectionButton section.my"></div>
     <div class="button-container">
-      <button>Agregar</button>
-      <button>Eliminar</button>
-  </div>
+        <button><img src="Imagenes/BotonIcons/Icono-Agregar.png" alt="Icono 1"><span>Agregar</span></button>
+        <button><img src="Imagenes/BotonIcons/Icono-Reserva.png" alt="Icono 2"><span>Reservar</span></button>
+        <button><img src="Imagenes/BotonIcons/Icono-Remover.png" alt="Icono 3"><span>Eliminar</span></button>
+        
+      </div>
+      
+  
   
   <div class="card-container">
       <div class="card">
@@ -179,13 +177,13 @@
           <div class="fecha">Fecha - XX/XX/XXXX</div>
       </div>
   </div>
-      <footer class="navbar navbar-expand-lg fixed-bottom" style="background-color: #f8f9fa; transition: background-color 0.3s, box-shadow 0.3s; border-top: 1px solid #dee2e6; height: 30px;">
-        <div class="container-fluid d-flex justify-content-between align-items-center" style="font-size: 0.8rem;">
-          <span class="navbar-text mx-auto text-muted">
-            Copyright &copy; Universidad de la Costa CUC 2024.
-          </span>
-        </div>
-      </footer>
+  <footer class="navbar navbar-expand-lg fixed-bottom" style="background-color: #f8f9fa; text-decoration: none; transition: background-color 0.3s, box-shadow 0.3s; border-top: 1px solid #dee2e6; height: 30px;">
+    <div class="container-fluid d-flex justify-content-between align-items-center" style="font-size: 0.8rem;">
+      <span class="navbar-text mx-auto text-muted">
+        Copyright &copy; <a href="https://www.cuc.edu.co/">Universidad de la Costa CUC</a> 2024.
+      </span>
+    </div>
+</footer>
       
       
 </body>
@@ -212,6 +210,7 @@
   // Seleccionamos los botones y las cards
   const agregarBtn = document.querySelector(".button-container button:first-child");
   const eliminarBtn = document.querySelector(".button-container button:last-child");
+  const reservarBtn = document.querySelector(".button-container button:nth-child(2)");
 
   const cards = document.querySelectorAll(".card");
 
@@ -225,56 +224,149 @@
       // Resaltar el botón seleccionado
       agregarBtn.classList.toggle("selected", accion === "agregar");
       eliminarBtn.classList.toggle("selected", accion === "eliminar");
+      reservarBtn.classList.toggle("selected", accion === "reservar")
+      
   }
 
   // Asignar eventos a los botones
   agregarBtn.addEventListener("click", () => seleccionarAccion("agregar"));
   eliminarBtn.addEventListener("click", () => seleccionarAccion("eliminar"));
+  reservarBtn.addEventListener("click", ()=> seleccionarAccion("reservar"))
 
   // Función para manejar el estado de una card
   async function cambiarEstado(card) {
-      const estadoActual = card.classList;
-      const numeroEspacio = card.dataset.numero;
-      const nombreElemento = card.querySelector('.nombre');
-      const matriculaElemento = card.querySelector('.matricula');
-      const horaElemento = card.querySelector('.hora');
-      const fechaElemento = card.querySelector('.fecha');
+    const estadoActual = card.classList;
+    const numeroEspacio = card.dataset.numero;
+    const nombreElemento = card.querySelector('.nombre');
+    const matriculaElemento = card.querySelector('.matricula');
+    const horaElemento = card.querySelector('.hora');
+    const fechaElemento = card.querySelector('.fecha');
 
-      if (accionSeleccionada === "agregar") {
-          if (!estadoActual.contains("occupied") && !estadoActual.contains("reserved")) {
-              // Obtener el usuario autenticado del localStorage
-              const usuarioAutenticado = JSON.parse(localStorage.getItem('usuarioAutenticado'));
+    if (accionSeleccionada === "agregar") {
+        // Confirmación para agregar
+        const resultadoAgregar = await Swal.fire({
+            title: "¿Está seguro?",
+            text: "¿Está seguro de que quiere ocupar este espacio?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Sí, ocupar",
+            cancelButtonText: "Cancelar",
+            customClass: {
+                confirmButton: "swal2-confirm btn-custom-confirm",
+                cancelButton: "swal2-cancel btn-custom-cancel",
+                actions: "swal2-actions custom-actions"
+            },
+            buttonsStyling: false
+        });
 
-              if (usuarioAutenticado) {
-                  const { nombre, matricula } = usuarioAutenticado;
+        if (!resultadoAgregar.isConfirmed) return; // Si cancela, salir de la función.
 
-                  card.classList.add("occupied");
-                  card.classList.remove("reserved");
-                  card.querySelector('.card-text').textContent = `Espacio ${numeroEspacio} - Ocupado`;
-                  nombreElemento.textContent = `Nombre - ${nombre}`;
-                  matriculaElemento.textContent = `Matrícula - ${matricula}`;
+        if (!estadoActual.contains("occupied") && !estadoActual.contains("reserved")) {
+            // Obtener el usuario autenticado del localStorage
+            const usuarioAutenticado = JSON.parse(localStorage.getItem('usuarioAutenticado'));
 
-                  const ahora = new Date();
-                  const horaActual = ahora.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-                  const fechaActual = ahora.toLocaleDateString('es-ES'); // Formato DD/MM/YYYY
-                  horaElemento.textContent = `Hora - ${horaActual}`;
-                  fechaElemento.textContent = `Fecha - ${fechaActual}`;
-              }
-          }
-      } else if (accionSeleccionada === "eliminar") {
-          if (estadoActual.contains("occupied") || estadoActual.contains("reserved")) {
-              card.classList.remove("occupied", "reserved");
-              card.querySelector('.card-text').textContent = `Espacio ${numeroEspacio} - Vacío`;
-              nombreElemento.textContent = `Nombre - XXXXXXXX`;
-              matriculaElemento.textContent = `Matrícula - XXXXXXXX`;
-              horaElemento.textContent = `Hora - XX:XX`;
-              fechaElemento.textContent = `Fecha - XX/XX/XXXX`;
-          }
-      }
+            if (usuarioAutenticado) {
+                const { nombre, matricula } = usuarioAutenticado;
 
-      // Desactivar la acción seleccionada después de cada operación
-      desactivarAccion();
-  }
+                card.classList.add("occupied");
+                card.classList.remove("reserved");
+                card.querySelector('.card-text').textContent = `Espacio ${numeroEspacio} - Ocupado`;
+                nombreElemento.textContent = `Nombre - ${nombre}`;
+                matriculaElemento.textContent = `Matrícula - ${matricula}`;
+
+                const ahora = new Date();
+                const horaActual = ahora.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                const fechaActual = ahora.toLocaleDateString('es-ES'); // Formato DD/MM/YYYY
+                horaElemento.textContent = `Hora - ${horaActual}`;
+                fechaElemento.textContent = `Fecha - ${fechaActual}`;
+            }
+        }
+    } else if (accionSeleccionada === "eliminar") {
+        // Confirmación para eliminar
+        const resultadoEliminar = await Swal.fire({
+            title: "¿Está seguro?",
+            text: "¿Está seguro de que quiere liberar este espacio?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Sí, liberar",
+            cancelButtonText: "Cancelar",
+            customClass: {
+                confirmButton: "swal2-confirm btn-custom-confirm",
+                cancelButton: "swal2-cancel btn-custom-cancel",
+                actions: "swal2-actions custom-actions"
+            },
+            buttonsStyling: false
+        });
+
+        if (!resultadoEliminar.isConfirmed) return; // Si cancela, salir de la función.
+
+        if (estadoActual.contains("occupied") || estadoActual.contains("reserved")) {
+            card.classList.remove("occupied", "reserved");
+            card.querySelector('.card-text').textContent = `Espacio ${numeroEspacio} - Vacío`;
+            nombreElemento.textContent = `Nombre - XXXXXXXX`;
+            matriculaElemento.textContent = `Matrícula - XXXXXXXX`;
+            horaElemento.textContent = `Hora - XX:XX`;
+            fechaElemento.textContent = `Fecha - XX/XX/XXXX`;
+        }
+    } else if (accionSeleccionada === "reservar") {
+    // Confirmación para reservar con selección de fecha y hora
+    const { value: reserva } = await Swal.fire({
+        title: "Reservar espacio",
+        html: `
+            <input type="date" id="fechaReserva" class="swal2-input" placeholder="Selecciona la fecha" min="${new Date().toISOString().split('T')[0]}">
+            <input type="time" id="horaReserva" class="swal2-input" placeholder="Selecciona la hora">
+        `,
+        showCancelButton: true,
+        confirmButtonText: "Reservar",
+        cancelButtonText: "Cancelar",
+        customClass: {
+            confirmButton: "swal2-confirm btn-custom-confirm",
+            cancelButton: "swal2-cancel btn-custom-cancel",
+            actions: "swal2-actions custom-actions"
+        },
+        buttonsStyling: false,
+        focusConfirm: false,
+        preConfirm: () => {
+            const fecha = document.getElementById('fechaReserva').value;
+            const hora = document.getElementById('horaReserva').value;
+            
+            if (!fecha || !hora) {
+                Swal.showValidationMessage("Por favor selecciona una fecha y una hora.");
+            }
+            return { fecha, hora };
+        }
+    });
+
+    if (reserva) {
+        let { fecha, hora } = reserva;
+
+        // Convertir la fecha al formato DD/MM/YYYY
+        fecha = fecha.split('-').reverse().join('/'); // Cambia el orden de la fecha
+
+        if (!estadoActual.contains("occupied")) {
+            const usuarioAutenticado = JSON.parse(localStorage.getItem('usuarioAutenticado'));
+
+            if (usuarioAutenticado) {
+                const { nombre, matricula } = usuarioAutenticado;
+
+                card.classList.add("reserved");
+                card.classList.remove("occupied");
+                card.querySelector('.card-text').textContent = `Espacio ${numeroEspacio} - Reservado para el ${fecha} a las ${hora}`;
+                nombreElemento.textContent = `Nombre - ${nombre}`;
+                matriculaElemento.textContent = `Matrícula - ${matricula}`;
+                horaElemento.textContent = `Hora de Reserva - ${hora}`;
+                
+                fechaElemento.textContent = `Fecha de Reserva - ${fecha}`;
+            }
+        }
+    }
+}
+
+    // Desactivar la acción seleccionada después de cada operación
+    desactivarAccion();
+}
+
+
 
   // Función para desactivar la acción seleccionada
   function desactivarAccion() {
@@ -293,4 +385,6 @@
   });
 
 </script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </html>

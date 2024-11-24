@@ -1,5 +1,4 @@
 
-   
    .menu-item {
     padding: 10px;
     margin-bottom: 5px;
@@ -38,7 +37,7 @@
 }
 
 .highlight {
-  color: red; 
+  color: b30000; 
   font-stretch: expanded;
 
 }
@@ -47,7 +46,7 @@
   margin-top: 10px; 
   padding: 5px; 
   width: 550px; 
-  border: 1px solid #ff0000; 
+  border: 1px solid #b30000; 
   border-radius: 4px; 
   text-align: center;
   margin-left: 60px;
@@ -87,7 +86,7 @@
   height: 100px;
   background-color: #f8f9fa;
   border-radius: 12px;
-  border: 2px solid #ff0000;
+  border: 2px solid #b30000;
   box-shadow: 0 9px 18px rgba(0, 0, 0, 0.3);
   transition: 0.3s;
   text-align: center;
@@ -116,7 +115,7 @@
 
 .my-button:hover {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); 
-  background-color: #ff0000;
+  background-color: #b30000;
   color: #f8f9fa;
 }
 .button-icon {
@@ -133,10 +132,28 @@ body {
   padding-bottom: 80px; 
 }
 
-footer {
-  position: relative; 
+footer.navbar {
+  background-color: #f8f9fa; 
+  border-top: 1px solid #dee2e6; 
+  font-size: 0.8rem;
+  height: 30px; 
 }
 
+footer .navbar-text {
+  color: #6c757d; 
+  text-align: center; 
+  font-weight: 400;
+}
+
+footer .navbar-text a {
+  color: #6c757d; 
+  text-decoration: none; 
+}
+
+footer .navbar-text a:hover {
+  color: #6c757d; 
+  text-decoration: underline; 
+}
 
 i{
   display: flex;

@@ -1,31 +1,35 @@
+/* Estilos generales */
+body {
+  padding-bottom: 80px; 
+}
 
-   
-   .menu-item {
-    padding: 10px;
-    margin-bottom: 5px;
-    background-color: #f8f9fa;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-  }
-  .menu-item:hover {
-    background-color: #e0e0e0;
-  }
+.menu-item {
+  padding: 10px;
+  margin-bottom: 5px;
+  background-color: #f8f9fa;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
 
-  .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='white' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-  }
-  
-  .image-container {
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
-    height: 38vh;
-    margin-top: 2px;
+.menu-item:hover {
+  background-color: #e0e0e0;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='white' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.image-container {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  height: 38vh;
+  margin-top: 2px;
 }
 
 .center-image {
-    max-width: 100%; 
-    height: 80%; 
+  max-width: 100%; 
+  height: 80%; 
 }
 
 .search-container {
@@ -40,7 +44,6 @@
 .highlight {
   color: red; 
   font-stretch: expanded;
-
 }
 
 .search-input {
@@ -58,153 +61,96 @@
   height: 2px; 
   background-color: rgb(122, 120, 120); 
   margin: 40px 20px; 
-
 }
 
 .button-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-
-  margin-left: 200px;
-  padding: 0px;
-  margin: auto;
-  
-}
-
-.button-column {
   display: flex;
-  flex-direction: column;
-  justify-content: start;
-
-
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
-.my-button {
+/* Estilos de los botones */
+.button-container button {
   display: flex;
   align-items: center;
-  margin: 10px 0; 
-  width: 250px;
-  height: 100px;
-  background-color: #f8f9fa;
-  border-radius: 12px;
-  border: 2px solid #ff0000;
-  box-shadow: 0 9px 18px rgba(0, 0, 0, 0.3);
-  transition: 0.3s;
-  text-align: center;
+  justify-content: center;
+  width: 150px;
+  height: 60px;
+  background-color: white;
+  color: #333;
+  border-radius: 15px;
+  border: 2px solid #b30000;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2);
   position: relative;
-  font-size: 14px;
-  padding: 0 10px;
-  text-align:justify;
-  
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow: hidden;
 }
 
-
-.my-button::after {
+/* Barra en el fondo del botón */
+.button-container button::after {
   content: '';
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 10px;
-  background-color: #b30000; /* Barra roja al fondo */
+  height: 6px;
+  background-color: #b30000;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
-  transition: background-color 0.3s ease; /* Transición suave para el after */
-
+  transition: background-color 0.3s ease;
 }
 
-
-.my-button:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); 
-  background-color: #ff0000;
-  color: #f8f9fa;
-}
-.button-icon {
-  display: flex;
-  grid-column: 1;
-  width: 50px; 
-  height: 50px;
-  margin-right: 60px; 
-
-}
- 
-
-body {
-  padding-bottom: 80px; 
-}
-
-footer {
-  position: relative; 
-}
-
-
-i{
-  display: flex;
-  padding: 15px;
-
-}
-
-#imagen-usuario-container {
-  width: 50px;
-  text-align: center;
-}
-
-#imagen-usuario {
-  display: none; 
-  width: 1px;
-  height: 1px; 
-  margin: 0 auto; 
-  position: relative;
-  top: 1px; 
-  border-radius: 50%; 
-  object-fit: cover; 
-  overflow: hidden; 
-}
-
-#nombre-usuario {
-  margin-top: 20px;
-  margin-bottom: 50px;
-}
-
-.button-container {
-  display: flex;
-  gap: 10px;
-  margin-top: 10px;
-  margin-left: 580px;
-}
-
-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  border: none;
-  border-radius: 5px;
-  background-color: #808080;
-  color: white;
-  transition: background-color 0.3s;
-}
-
-button:hover {
+/* Estilos de hover para los botones */
+.button-container button:hover {
   background-color: #b30000;
   color: white;
-  border-color: #b30000;
 }
 
+.button-container button:hover::after {
+  background-color: #990000;
+}
+
+/* Estilos para el icono del botón */
+.button-container button img {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+.button-container button:hover img{
+  transition: filter 0.1s ease;
+  filter: brightness(0) invert(1);
+}
+
+/* Alineación del texto en el botón */
+.button-container button span {
+  margin-left: 5px;
+}
+
+
+/* Contenedor de las cartas */
 .card-container {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 15px;
   margin-top: 30px;
-  width: 80%;
-  margin-left: 20px;
-  margin-bottom: 20px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
+/* Estilos de las cartas */
 .card {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 250px;
+  width: 100%;
+  max-width: 300px;
   height: 200px;
   background-color: white;
   color: #333;
@@ -225,8 +171,151 @@ button:hover {
   color: white;
 }
 
+/* Efecto de botón seleccionado */
 button.selected {
   background-color: #333333;
   color: white;
 }
 
+/* Estilos para el icono del botón */
+.button-icon {
+  display: flex;
+  width: 40px; /* Reduced icon size */
+  height: 40px;
+  margin-right: 15px; /* Reduced space between icon and text */
+}
+
+/* Estilos específicos de botones grandes */
+.my-button {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centers icon and text */
+  margin: 10px 0;
+  width: 200px; /* Reduced width */
+  height: 80px; /* Reduced height */
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  border: 2px solid #ff0000;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  font-size: 16px; /* Slightly larger font size */
+  text-align: center;
+  position: relative;
+  padding: 10px 20px;
+}
+
+.my-button::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  background-color: #b30000;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.my-button:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  background-color: #ff0000;
+  color: #f8f9fa;
+}
+
+footer.navbar {
+  background-color: #f8f9fa; 
+  border-top: 1px solid #dee2e6; 
+  font-size: 0.8rem;
+  height: 30px; 
+}
+
+footer .navbar-text {
+  color: #6c757d; 
+  text-align: center; 
+  font-weight: 400;
+}
+
+footer .navbar-text a {
+  color: #6c757d; 
+  text-decoration: none; 
+}
+
+footer .navbar-text a:hover {
+  color: #6c757d; 
+  text-decoration: underline; 
+}
+/* Media Queries para responsividad */
+@media (max-width: 1024px) {
+  .card-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .button-container {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .button-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .card-container {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .my-button, .button-container button {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+/* Estilo para el botón de confirmación */
+.swal2-confirm.btn-custom-confirm {
+  background-color: #fc1100; /* Verde */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+ 
+}
+
+/* Estilo para el botón de cancelación */
+.swal2-cancel.btn-custom-cancel {
+  background-color: #494747; /* Rojo */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Estilo para separar los botones */
+.swal2-actions.custom-actions {
+  display: flex;
+  justify-content: space-around; /* Opcional: separa los botones de forma equilibrada */
+  gap: 15px; /* Espacio entre los botones */
+}
+
+
+
+.swal2-actions.custom-actions {
+  display: flex;
+  justify-content: space-around; 
+  gap: 15px;
+}
+/* Estilo para el estado reservado */
+.reserved {
+  background-color: yellow;
+  border: 1px solid #685e0a;
+
+}
